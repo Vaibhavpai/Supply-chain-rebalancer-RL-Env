@@ -1,0 +1,50 @@
+name: supply-chain-inventory-rebalancer
+version: "1.0.0"
+description: >
+  Deterministic warehouse inventory rebalancing environment for benchmarking
+  LLM planning and operations research reasoning. Simulates 3 warehouses,
+  2 suppliers, 5 SKUs across daily time-stepped episodes.
+
+observation_space: Observation
+action_space: Action
+reward_type: dense
+
+tasks:
+  - id: 1
+    name: simple_restock
+    difficulty: easy
+    max_steps: 5
+    success_threshold: 1.0
+    description: >
+      West warehouse has 0 units of SKU_A with 50 units forecasted tomorrow.
+      Agent must transfer >= 50 units from Central to West before advancing time.
+
+  - id: 2
+    name: cost_optimized_rebalancing
+    difficulty: medium
+    max_steps: 15
+    success_threshold: 0.7
+    description: >
+      Mismatched inventory across all 3 warehouses over a 5-day simulation.
+      Fulfill forecasted demand without stockouts while minimizing costs.
+
+  - id: 3
+    name: supply_shock
+    difficulty: hard
+    max_steps: 25
+    success_threshold: 0.6
+    description: >
+      7-day simulation. On Day 3, Supplier 1 goes offline. Agent must triage
+      remaining inventory and re-route internal stock to maximize fulfilled demand.
+
+metadata:
+  domain: logistics
+  stochastic: false
+  multi_agent: false
+  requires_planning: true
+  nodes:
+    warehouses: [east, central, west]
+    suppliers: [supplier_1, supplier_2]
+  skus: [SKU_A, SKU_B, SKU_C, SKU_D, SKU_E]
+  baseline_model: Qwen/Qwen2.5-72B-Instruct
+  baseline_api: huggingface_inference
