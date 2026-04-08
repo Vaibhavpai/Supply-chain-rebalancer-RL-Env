@@ -6,6 +6,7 @@ colorTo: green
 sdk: docker
 app_port: 7860
 tags:
+  - openenv
   - reinforcement-learning
   - supply-chain
   - logistics
