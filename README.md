@@ -1,3 +1,18 @@
+---
+title: Supply Chain Inventory Rebalancer
+emoji: 🏭
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+tags:
+  - reinforcement-learning
+  - supply-chain
+  - logistics
+  - llm-benchmark
+  - openenv
+short_description: RL benchmark env for LLM supply chain planning
+---
 # Supply Chain Inventory Rebalancer — OpenM RL Environment
 
 An advanced reinforcement learning environment for optimizing multi-warehouse inventory management with **process supervision rewards**. Designed for the OpenM hackathon.

@@ -1,7 +1,12 @@
-# Core
+# Core Environment Dependencies
 pydantic>=2.0
 pyyaml
 pytest
 
-# HuggingFace Inference API (for baseline.py with Qwen)
+# LLM Integration (Strictly Required by Hackathon Rule 2)
+openai
 huggingface_hub>=0.23.0
+
+# Web Server (Required to keep the Space in "Running" state)
+fastapi
+uvicorn[standard]
